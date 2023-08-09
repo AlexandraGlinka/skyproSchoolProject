@@ -14,24 +14,24 @@ public class StudentController {
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
-    @GetMapping // READ / GET http://localhost:8080/faculty
+    @GetMapping
     public Collection<Student> getAllStudents() {
         return studentService.getAllStudents();
     }
-    @PostMapping // CREATE / POST http://localhost:8080/faculty
+    @PostMapping
     public Student addStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
     }
-    @GetMapping("/{id}") // READ / GET http://localhost:8080/faculty/23
+    @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Long id) {
         return studentService.getStudentById(id);
     }
-    @PutMapping("/{id}") // UPDATE / PUT http://localhost:8080/faculty/23
+    @PutMapping("/{id}")
     public Student updateStudent(@PathVariable Long id, @RequestBody Student student) {
         return studentService.updateStudent(id, student);
     }
 
-    @DeleteMapping("/{id}") // DELETE http://localhost:8080/faculty/23
+    @DeleteMapping("/{id}")
     public void deleteStudent(@PathVariable Long id) {
         studentService.deleteStudent(id);
     }
