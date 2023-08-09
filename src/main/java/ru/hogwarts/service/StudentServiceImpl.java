@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StudentServiceImpl implements StudentService {
     Map<Long, Student> students = new HashMap<>();
@@ -49,5 +50,12 @@ public class StudentServiceImpl implements StudentService {
             throw new StudentNotFoundException("Student not found");
         }
         students.remove(id);
+    }
+
+    @Override
+    public Collection<Student> getStudentsByAge(int age) {
+        return getAllStudents().stream()
+                .filter(student -> student.getAge() == age)
+                .collect(Collectors.toList());
     }
 }

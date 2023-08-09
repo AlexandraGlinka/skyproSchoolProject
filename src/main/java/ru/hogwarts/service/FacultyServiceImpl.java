@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class FacultyServiceImpl implements FacultyService {
@@ -49,5 +50,12 @@ public class FacultyServiceImpl implements FacultyService {
             throw new FacultyNotFoundException("Faculty not found");
         }
         faculties.remove(id);
+    }
+
+    @Override
+    public Collection<Faculty> getFacultiesByColor(String color) {
+        return getAllFaculties().stream()
+                .filter(faculty -> faculty.getColor().equals(color))
+                .collect(Collectors.toList());
     }
 }
