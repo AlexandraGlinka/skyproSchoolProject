@@ -1,5 +1,6 @@
 package ru.hogwarts.service;
 
+import org.springframework.stereotype.Service;
 import ru.hogwarts.exceptions.FacultyNotFoundException;
 import ru.hogwarts.exceptions.StudentNotFoundException;
 import ru.hogwarts.model.Faculty;
@@ -10,7 +11,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+@Service
 public class StudentServiceImpl implements StudentService {
     Map<Long, Student> students = new HashMap<>();
     @Override
